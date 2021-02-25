@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
 with open("version.txt", "w") as f:
-    f.write("23331121")
+    f.write("43")
     
 print("after")
