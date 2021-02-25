@@ -12,6 +12,7 @@ jobs:
       - name: just clone it
         run: |
           git clone https://github.com/MATTHEWFRAZER/github_actions_test.git
+          cd github_actions_test
           git checkout develop
           git log -3
           ./increment_version_number.py    
