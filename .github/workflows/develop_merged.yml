@@ -9,9 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check branch
-        run: | #git log -2     
+        run: | #git log -22     
           git config --global user.name ${GITHUB_ACTOR}
           git config --global user.email $(git log -1 --format=%ae)
           git add version.txt
           git commit --amend --no-edit
-          git push -f
+          git push -f 
