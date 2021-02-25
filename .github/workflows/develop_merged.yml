@@ -15,7 +15,8 @@ jobs:
           cd github_actions_test
           git checkout develop
           git log -3
-          ./increment_version_number.py    
+          ./increment_version_number.py
+          echo ${GITHUB_ACTOR}
           git config --global user.name ${GITHUB_ACTOR}
           git config --global user.email $(git log -1 --format=%ae)
           git add version.txt
