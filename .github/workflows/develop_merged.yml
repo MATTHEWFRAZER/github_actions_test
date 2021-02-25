@@ -11,6 +11,9 @@ jobs:
       # Checks-out develop
       - uses: actions/checkout@v2
       
+      - name: rewrite version
+        run: ./increment_version_number.py
+      
       - name: check branch
         run: | #git log -22     
           git config --global user.name ${GITHUB_ACTOR}
