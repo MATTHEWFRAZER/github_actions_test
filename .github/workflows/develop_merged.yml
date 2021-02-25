@@ -9,15 +9,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checks-out develop
-      - name: just clone it
-        run: |
-          git clone https://github.com/MATTHEWFRAZER/github_actions_test.git
-          cd github_actions_test
-          git checkout develop
-          git log -3
-          ./increment_version_number.py
-          git config --global user.name MATTHEWFRAZER
-          git config --global user.email mfrazeriguess@gmail.com
-          git add version.txt
-          git commit --amend --no-edit
-          git push -f 
+      #- name: just clone it
+      #  run: |
+      #    git clone https://github.com/MATTHEWFRAZER/github_actions_test.git
+      #    cd github_actions_test
+      #    git checkout develop
+      #    git log -3
+      #    ./increment_version_number.py
+      #    git config --global user.name MATTHEWFRAZER
+      #    git config --global user.email mfrazeriguess@gmail.com
+      #    git add version.txt
+      #    git commit --amend --no-edit
+      #    git push -f 
+      
+      - uses: actions/checkout@v2
+        with:
+          ref: develop
+        
+      - name: try get history
+        run: git log -3
