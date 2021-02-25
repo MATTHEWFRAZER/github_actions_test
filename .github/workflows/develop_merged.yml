@@ -8,6 +8,9 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
+      # Checks-out develop
+      - uses: actions/checkout@v2
+      
       - name: check branch
         run: | #git log -22     
           git config --global user.name ${GITHUB_ACTOR}
