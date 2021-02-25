@@ -9,13 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checks-out develop
-      - uses: actions/checkout@v2
-      
-      - name: rewrite version
-        run: ./increment_version_number.py
-      
-      - name: check branch
-        run: | #git log -22     
+      - name: just clone it
+        run: |
+          git clone https://github.com/MATTHEWFRAZER/github_actions_test.git
+          checkout develop
+          ./increment_version_number.py    
           git config --global user.name ${GITHUB_ACTOR}
           git config --global user.email $(git log -1 --format=%ae)
           git add version.txt
