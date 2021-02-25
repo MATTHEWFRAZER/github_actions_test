@@ -1,0 +1,17 @@
+name: Merge PR
+on:
+  pull_request:
+    types: [closed]
+    branches: [develop]
+jobs:
+  merge-PR:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: check branch
+        run: | #git log -2     
+          git config --global user.name ${GITHUB_ACTOR}
+          git config --global user.email $(git log -1 --format=%ae)
+          git add version.txt
+          git commit --amend --no-edit
+          git push -f
