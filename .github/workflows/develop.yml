@@ -20,7 +20,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         with:
-          ref: develop
+          fetch-depth: 0
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
@@ -42,9 +42,11 @@ jobs:
       - name: echo branch
         run: git branch --show-current
        
-      - name: check branch
-        run: | #git log -2     
-          git config --global user.name ${GITHUB_ACTOR}
-          git config --global user.email $(git log -1 --format=%ae)
+      - name: now amend
+        run: |
+          ./increment_version_number.py
+          git config --global user.name MATTHEWFRAZER
+          git config --global user.email mfrazeriguess@gmail.com
           git add version.txt
           git commit --amend --no-edit
+          git push -f
