@@ -42,9 +42,7 @@ jobs:
        
       - name: check branch
         run: | #git log -2     
-
-          git pull
+          git config --global user.name ${GITHUB_ACTOR}
+          git config --global user.email $(git log -1 --format=%ae)
           git add version.txt
           git commit --amend --no-edit
-      #    git push -f
-          
