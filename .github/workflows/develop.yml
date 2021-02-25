@@ -41,7 +41,7 @@ jobs:
         run: git branch --show-current
        
       - name: check branch
-        run: git log     
+        run: git log -2     
 
       #    git pull
       #    git add version.txt
